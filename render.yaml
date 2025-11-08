@@ -3,14 +3,14 @@ services:
     name: telegram-checkin-bot
     env: python
     plan: free
-    region: singapore   # 你可以改成 'oregon' 或 'frankfurt'，但建议保留 singapore
+    region: singapore
     buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python telegram_checkin_pro.py
     autoDeploy: true
     envVars:
       - key: TZ
-        value: Asia/Shanghai        # 时区，可改成 Asia/Jakarta 或 Asia/Bangkok
+        value: Asia/Shanghai
       - key: PYTHONUNBUFFERED
-        value: "1"                  # 让日志实时输出
+        value: "1"
       - key: PYTHONIOENCODING
-        value: "utf-8"              # 防止中文乱码
+        value: "utf-8"
