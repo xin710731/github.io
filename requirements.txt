@@ -1,5 +1,21 @@
-aiogram==3.1.0
-aiosqlite
-python-dotenv
-pydantic==2.6.1
-pydantic-core==2.16.3
+services:
+  - type: worker
+    name: telegram-checkin-bot
+    env: python
+
+    # ✅ 指定 Python 版本，避免依赖安装失败
+    pythonVersion: 3.10.13
+
+    # ✅ 构建命令：升级 pip，并使用更稳定的镜像源安装依赖
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+    # ✅ 启动命令：运行你的主程序
+    startCommand: python telegram_checkin_pro.py
+
+    # ✅ （可选）指定地区，Render 默认新加坡节点
+    region: singapore
+
+    # ✅ 环境变量（例如 Telegram Bot Token 可在 Render 仪表板手动设置）
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
