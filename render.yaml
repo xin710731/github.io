@@ -1,7 +1,6 @@
 services:
-  - type: web
-    name: telegram-checkin-pro
+  - type: worker
+    name: telegram-checkin-bot
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python telegram_checkin_pro.py
-    plan: free
