@@ -548,7 +548,7 @@ async def break_overtime_watcher(user_id: int, chat_id: int, btype: str, start_d
 # ---------------------------
 # 报表：收集 / 生成 / 发送（Excel）
 # ---------------------------
-from aiogram.types
+from aiogram.types import *
 import BufferedInputFile
 
 def safe_filename(s: str) -> str:
@@ -763,3 +763,4 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("已停止。")
+
