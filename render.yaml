@@ -1,43 +1,11 @@
-name: Bot Deployment
-
-on:
-  push:
-    branches:
-      - main  # 或者您的主分支名称
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      # 步骤 1: 检出代码
-      - name: Check out repository
-        uses: actions/checkout@v2
-
-      # 步骤 2: 设置 Python 环境
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      # 步骤 3: 安装依赖
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      # 步骤 4: 配置环境变量
-      - name: Set environment variables
-        run: |
-          echo "DB_PATH=your_db_path" >> $GITHUB_ENV
-          echo "ADMIN_IDS=your_admin_ids" >> $GITHUB_ENV
-          echo "BOT_TOKEN=your_bot_token" >> $GITHUB_ENV
-          echo "DAILY_REPORT_HOUR=your_daily_report_hour" >> $GITHUB_ENV
-          echo "WEEKLY_REPORT_HOUR=your_weekly_report_hour" >> $GITHUB_ENV
-          echo "MONTHLY_REPORT_DAY=your_monthly_report_day" >> $GITHUB_ENV
-          echo "MONTHLY_REPORT_HOUR=your_monthly_report_hour" >> $GITHUB_ENV
-
-      # 步骤 5: 启动 bot
-      - name: Run bot
-        run: |
-          nohup python bot.py &  # 这里假设您的 bot 代码在 `bot.py` 文件中
+services:
+  - type: worker
+    name: telegram-checkin-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram_checkin_pro_v3.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
