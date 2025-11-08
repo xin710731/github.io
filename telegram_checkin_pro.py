@@ -548,7 +548,8 @@ async def break_overtime_watcher(user_id: int, chat_id: int, btype: str, start_d
 # ---------------------------
 # 报表：收集 / 生成 / 发送（Excel）
 # ---------------------------
-from aiogram.types import BufferedInputFile
+from aiogram.types
+import BufferedInputFile
 
 def safe_filename(s: str) -> str:
     # 移除文件名非法字符
