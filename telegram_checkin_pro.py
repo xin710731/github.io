@@ -549,9 +549,11 @@ async def break_overtime_watcher(user_id: int, chat_id: int, btype: str, start_d
 # 报表：收集 / 生成 / 发送（Excel）
 # ---------------------------
 from aiogram.types import *
-import BufferedInputFile
+from aiogram.types import BufferedInputFile
 
 def safe_filename(s: str) -> str:
+    # 这里是你的函数逻辑，比如过滤特殊字符
+    return "".join(c if c.isalnum() or c in (' ', '.', '_', '-') else '_' for c in s)
     # 移除文件名非法字符
     return re.sub(r'[\\/:"*?<>|]+', "_", s)
 
@@ -763,4 +765,5 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("已停止。")
+
 
