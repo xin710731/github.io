@@ -1,5 +1,5 @@
 aiogram==3.1.0
 aiosqlite
 python-dotenv
-setuptools
-wheel
+pydantic==2.6.1
+pydantic-core==2.16.3
