@@ -2,15 +2,10 @@ services:
   - type: worker
     name: telegram-checkin-bot
     env: python
-    plan: free
-    region: singapore
-    buildCommand: pip install --no-cache-dir -r requirements.txt
+    pythonVersion: 3.10.13
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
     startCommand: python telegram_checkin_pro.py
-    autoDeploy: true
+    region: singapore
     envVars:
-      - key: TZ
-        value: Asia/Shanghai
       - key: PYTHONUNBUFFERED
         value: "1"
-      - key: PYTHONIOENCODING
-        value: "utf-8"
