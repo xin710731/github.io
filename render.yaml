@@ -2,9 +2,6 @@ services:
   - type: web
     name: telegram-checkin-pro
     env: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python telegram_checkin_pro.py
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.9
+    plan: free
