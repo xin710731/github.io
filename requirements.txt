@@ -1,3 +1,5 @@
 aiogram==3.1.0
 aiosqlite
 python-dotenv
+setuptools
+wheel
